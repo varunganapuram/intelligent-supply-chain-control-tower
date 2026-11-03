@@ -4,7 +4,7 @@
 
 This project looks at three related questions: where deliveries missed their promised date, whether an order could have been flagged at purchase, and which cases a small operations team could afford to review.
 
-The source is the Olist marketplace dataset from Brazil, covering 2016Ã¢â‚¬â€œ2018. The application is a historical case study. It does not track current shipments.
+The source is the Olist marketplace dataset from Brazil, covering 2016-2018. The application is a historical case study. It does not track current shipments.
 
 ![Delivery review overview](docs/screenshots/01.png)
 
@@ -24,8 +24,8 @@ The delivered data extracts let the dashboard run without PostgreSQL. An [offlin
 
 - **93.23% of valid completed deliveries arrived on time.** There are 99,441 orders in the source, but only 96,470 enter this measure. The other 2,971 are reported separately rather than treated as on time.
 - **March 2018 is the clearest monthly exception.** Of 7,003 valid deliveries purchased that month, 1,328 were late: 18.96%. The dashboard shows order volume below the trend so small months do not carry the same visual weight as large ones.
-- **SÃƒÂ£o Paulo has the largest late-order count, not the worst late rate.** Its 1,820 late orders account for about 28% of all late cases. This is why the regional review includes both counts and rates.
-- **Low review scores are much more common among late deliveries.** Among reviewed orders with a valid outcome, 62.4% of late deliveries scored 1Ã¢â‚¬â€œ2, compared with 9.3% of on-time deliveries. Product and seller differences may also contribute.
+- **São Paulo has the largest late-order count, not the worst late rate.** Its 1,820 late orders account for about 28% of all late cases. This is why the regional review includes both counts and rates.
+- **Low review scores are much more common among late deliveries.** Among reviewed orders with a valid outcome, 62.4% of late deliveries scored 1-2, compared with 9.3% of on-time deliveries. Product and seller differences may also contribute.
 
 These are investigation leads. The dataset does not establish who caused a delay or what an intervention would have changed.
 

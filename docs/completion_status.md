@@ -35,7 +35,7 @@ The historical replay is a batch of orders purchased on a selected historical da
 
 ## Presentation revision
 
-The report uses a light layout with plain section names, readable percentages, and state names. Headings use bold black type; subheadings and body text use thin black type. Dashboard charts use saturated RGB colors, solid bars, and thicker lines. The overview pairs delivery rates with order volume and includes calculated notes on the March 2018 spike and the concentration of late orders in SÃƒÂ£o Paulo. Dashboard screenshots, the offline report, Power BI theme and walkthrough follow these typography and chart settings; the PDF remains a separate print report.
+The report uses a light layout with plain section names, readable percentages, and state names. Headings use bold black type; subheadings and body text use thin black type. Dashboard charts use saturated RGB colors, solid bars, and thicker lines. The overview pairs delivery rates with order volume and includes calculated notes on the March 2018 spike and the concentration of late orders in São Paulo. Dashboard screenshots, the offline report, Power BI theme and walkthrough follow these typography and chart settings; the PDF remains a separate print report.
 
 All six sections open successfully. Additional browser checks cover the state filter, a regional comparison with no qualifying rows, a daily queue with no selected cases, and the eventual-outcome checkbox. See `reports/revised_filter_checks.json`.
 
