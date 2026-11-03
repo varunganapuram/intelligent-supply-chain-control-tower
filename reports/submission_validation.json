@@ -1,0 +1,25 @@
+{
+  "scope": "Historical Olist portfolio prototype; engineering and disclosure acceptance",
+  "submission_ready": true,
+  "checks": {
+    "full_pipeline": true,
+    "warehouse_no_errors": true,
+    "tests_no_failures_errors_or_skips": true,
+    "six_dashboard_pages": true,
+    "powerbi_schema": true,
+    "native_powerbi_data_and_dax": true,
+    "executed_notebooks": true,
+    "offline_report_and_video": true,
+    "deliverables_present": true,
+    "calibration_result_disclosed": true,
+    "failed_attempts_retained": true
+  },
+  "calibration_statistical_acceptance": false,
+  "operational_use_approved": false,
+  "limitations": [
+    "Retrospective evaluation data was previously examined.",
+    "Native pixel review and full native visual interactions remain unverified.",
+    "Calibration failed its fixed statistical gates; probabilities are research-only.",
+    "One warehouse warning retains documented source timestamp anomalies."
+  ]
+}

@@ -37,3 +37,7 @@ The allowlist is documented in `feature_dictionary.md`. Seller outcomes must str
 Global importance uses validation-frozen model permutation importance on a fixed test sample; it explains ranking associations. Local examples replace one feature with its calibration-cohort reference value. These are nonadditive reference comparisons, not SHAP values and not causal intervention effects. Adjusted logistic coefficients provide conditional associations, with numeric features standardized and categorical encodings correlated.
 
 Model performance varies by region, category, missing-distance and seller history; see model_segments.csv. Feature missingness and means by split are exported for drift review. Sparse segment estimates are unstable. Retraining, probability monitoring and an intervention pilot are prerequisites for real use. The package versions are locked; only load trusted joblib files.
+
+## Rejected follow-up experiment
+
+The v4 rolling-origin attempt was run once under `docs/revalidation_protocol_v4.md`. It failed the same statistical gates and was not promoted. Its source, cutoff summaries, metrics and outcome are retained in `src/experiments/` and `reports/legacy_v4/`. Run `python scripts/revalidate_v4.py` to reproduce it without changing this published v3 model or database. No new independent test can be claimed on the repeatedly examined Olist evaluation outcomes.

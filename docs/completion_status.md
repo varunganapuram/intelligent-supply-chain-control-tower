@@ -10,7 +10,7 @@ The runnable historical prototype and local portfolio handoff are delivered. Nat
 | Prediction | Strict as-of features; independent SQL/Python history agreement on 100 orders; chronological buffered train/selection/calibration/test; trained artifacts, segment and drift reports, label coverage, explanations and model card |
 | Probability acceptance | **Not accepted for operations:** Revalidation completed under v3; mean predicted 8.00%, observed 4.81%; Brier 0.0480 versus calibration-prior baseline 0.0460. Fixed gates failed; operational use not approved |
 | Decision optimization | OR-Tools daily allocation; capacity, budget and state caps; same-limit policy comparisons; 10%/20%/30% hypothetical effectiveness scenarios; interactive simulator; no realized impact claimed |
-| Integration | Full raw-to-warehouse-to-features-to-model-to-scenarios run succeeded; generated facts published to PostgreSQL and CSV/Parquet; purchase-time scores with day-end batch review; 19 tests pass with zero skips |
+| Integration | Full raw-to-warehouse-to-features-to-model-to-scenarios run succeeded; generated facts published to PostgreSQL and CSV/Parquet; purchase-time scores with day-end batch review; 21 tests pass with zero skips |
 | Portfolio | README, 3 executed notebooks (24 code cells), screenshots, 6-page standalone HTML report, 4-page rendered/inspected PDF, approximately five-minute narrated MP4, interview notes, operating guide and public GitHub repository |
 | Automation | GitHub Actions workflow with PostgreSQL service, full rebuild, tests, export and monthly schedule; latest execution status is visible at https://github.com/varunganapuram/intelligent-supply-chain-control-tower/actions/workflows/tests.yml |
 
@@ -26,7 +26,7 @@ The historical replay is a batch of orders purchased on a selected historical da
 
 - `reports/pipeline_run.json`: successful full rebuild with measured stage times.
 - `reports/dbt_run_results.json`: all warehouse model and assertion statuses.
-- `reports/pytest_results.xml`: 19 passing Python tests, zero failures/errors/skips.
+- `reports/pytest_results.xml`: 21 passing Python tests, zero failures/errors/skips.
 - `reports/asof_sql_python_reconciliation.csv`: independently checked seller history.
 - `reports/browser_checks.json`: six pages and zero-capacity interaction, no errors.
 - `reports/powerbi_validation.json`, `reports/powerbi_tom_validation.json`: schema and metadata-parser validation boundaries.
@@ -48,3 +48,9 @@ Native Power BI Desktop 2.159.1231.0 opened the project and refreshed all seven 
 ## Calibration revalidation details
 
 The v1, v2 and v3 attempts are retained. V3 compares raw, sigmoid and isotonic methods on a forward validation cohort using probability-focused selection. No failed gate was relaxed or hidden. The evaluated July-August data had been examined in earlier iterations; this is not a newly unseen or prospective test.
+
+## Final submission review
+
+The complete historical pipeline was rebuilt after the final revalidation attempt. The portfolio submission gate checks implementation and evidence separately from operational model readiness. It does not waive the failed scientific criteria. V4 tested four earlier forward folds and an updated training window; it failed the fixed gates and was rejected for promotion. See `reports/legacy_v4/README.md`. V3 remains the published research model. All four attempts are retained. New representative data is required for an independent evaluation before any operational probability use.
+
+Run `python scripts/validate_submission.py` after the pipeline, JUnit test run, browser and artifact checks. The result records each check and every remaining limitation, including native pixel review.

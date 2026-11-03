@@ -1,8 +1,12 @@
 {
   "status": "success",
   "completed": {
-    "models": 17.613,
-    "optimization": 17.309
+    "ingest": 15.341,
+    "warehouse": 51.09,
+    "analytics": 41.658,
+    "features": 50.808,
+    "models": 23.247,
+    "optimization": 25.289
   },
-  "run_at": "2026-11-03T09:13:36.883243+00:00"
+  "run_at": "2026-11-03T10:14:55.506831+00:00"
 }

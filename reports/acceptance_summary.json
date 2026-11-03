@@ -5,5 +5,7 @@
   "revalidation": "completed; acceptance gates failed",
   "operational_use_approved": false,
   "repository": "https://github.com/varunganapuram/intelligent-supply-chain-control-tower",
-  "python_tests": 19
+  "python_tests": 21,
+  "v4_revalidation": "completed; rejected for promotion after failed statistical gates",
+  "submission_scope": "Historical portfolio prototype"
 }

@@ -1,0 +1,34 @@
+{
+  "protocol": "docs/revalidation_protocol_v4.md",
+  "model_version": "purchase-v4-frozen-20180701",
+  "selected_model": "logistic__raw",
+  "selected_calibration_method": "raw",
+  "evaluation_purchases": "July-August 2018",
+  "previously_examined_historical_data": true,
+  "independent_prospective_test": false,
+  "mean_predicted_risk": 0.13630911080934172,
+  "observed_late_rate": 0.04805309026944911,
+  "calibrated_brier": 0.0610479788854276,
+  "constant_brier": 0.04654861616331981,
+  "calibration_prior": 0.06348498364555456,
+  "calibration_prior_brier": 0.04598213411817677,
+  "expected_calibration_error": 0.08825602053989262,
+  "retrospective_accepted": false,
+  "acceptance_gates": {
+    "finite_probabilities": true,
+    "pooled_bias_within_2pp": false,
+    "equal_frequency_ece_within_2pp": false,
+    "brier_beats_calibration_prior": false,
+    "monthly_bias_within_3pp": false
+  },
+  "operational_use_approved": false,
+  "status": "Retrospective revalidation completed with failed acceptance gates; not accepted for operational probability use",
+  "mean_bias_95pct_day_bootstrap": [
+    0.07921441501116479,
+    0.09539538145149123
+  ],
+  "brier_gain_95pct_day_bootstrap": [
+    -0.017315959551854325,
+    -0.013177660991158436
+  ]
+}

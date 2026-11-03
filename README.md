@@ -60,7 +60,7 @@ python -m pytest -q
 
 The tested environment is Python 3.12 with PostgreSQL 17. Missing raw files are downloaded from the public Kaggle archive. Existing originals are left unchanged. The loader replaces the project's raw tables; see [the runbook](docs/operations.md) before using another database.
 
-The recorded run has 19 passing Python tests. All 21 dbt models build; 19 data assertions pass and one warns about 189 source timestamp anomalies. An independent SQL/Python audit agrees on the seller history for 100 orders. No source anomalies are silently removed.
+The recorded run has 21 passing Python tests. All 21 dbt models build; 19 data assertions pass and one warns about 189 source timestamp anomalies. An independent SQL/Python audit agrees on the seller history for 100 orders. No source anomalies are silently removed.
 
 ## Files to review
 
@@ -77,6 +77,12 @@ The recorded run has 19 passing Python tests. All 21 dbt models build; 19 data a
 Native Power BI Desktop 2.159.1231.0 opened the project and refreshed all seven tables. Seven DAX query groups passed 6,101 reconciliations against Python/SQL exports, including totals, dates, states, sellers, risks, scenarios and an empty-cohort BLANK check. Desktop accessibility exposed the populated overview cards and all six report tabs. Windows graphics capture timed out, so pixel-level screenshots and a full native visual-interaction review are not claimed. Update `DataFolder` before refreshing the project on another computer. See [native acceptance evidence](powerbi/README.md).
 
 The public source is at [varunganapuram/intelligent-supply-chain-control-tower](https://github.com/varunganapuram/intelligent-supply-chain-control-tower). [GitHub Actions](https://github.com/varunganapuram/intelligent-supply-chain-control-tower/actions/workflows/tests.yml) rebuilds the historical pipeline on push. A successful engineering workflow does not imply model readiness: `python scripts/check_model_readiness.py` deliberately returns failure while calibration acceptance is not established. [Delivery status](docs/completion_status.md) records the native capture and scientific limits.
+
+## Portfolio submission acceptance
+
+The requested deliverable is a historical portfolio prototype. `python scripts/validate_submission.py` checks the full pipeline, warehouse, test evidence, six dashboard pages, executed notebooks, offline report, video, Power BI schemas/native data evidence, and honest model-status disclosure. It writes `reports/submission_validation.json`. It does not convert a failed probability-quality result into deployment approval or claim that saved UI evidence was newly captured by CI.
+
+A further [four-fold chronological experiment](docs/revalidation_protocol_v4.md) was tested without changing the acceptance limits. It also failed and was rejected for promotion; [its evidence](reports/legacy_v4/README.md) and reproducible isolated runner are retained. V3 remains the published research model. The evaluated historical outcomes are no longer untouched, so another independent test requires new data. The original roadmap asks for defensible findings and documented limitations, not a guaranteed model-performance figure.
 
 ## Data and license
 

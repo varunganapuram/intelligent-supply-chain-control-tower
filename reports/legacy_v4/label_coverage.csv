@@ -1,0 +1,6 @@
+split,all_purchases,eventually_eligible,labels_usable_at_cutoff,excluded_or_unresolved,eligible_but_not_yet_known,label_cutoff
+train,66638,64320,64094,2318,226,2018-05-01
+method_fit,6873,6749,6726,124,23,2018-07-01
+validation,27751,27105,27074,646,31,2018-07-01
+calibration,6873,6749,6726,124,23,2018-07-01
+test,12804,12507,12507,297,0,Final historical extract

@@ -1,0 +1,197 @@
+{
+  "selected_model": "logistic__raw",
+  "model_version": "purchase-v4-frozen-20180701",
+  "model_available_at": "2018-07-01 00:00:00",
+  "feature_schema_sha256": "bb535ee782b34072f615ad7974413b6d32c8e18375abdc31a733c1b1920b9732",
+  "splits": {
+    "train": {
+      "n": 64094,
+      "purchase_min": "2016-09-15 12:16:38",
+      "purchase_max": "2018-03-31 23:54:10",
+      "max_label_known_at": "2018-04-30 23:40:42"
+    },
+    "method_fit": {
+      "n": 6726,
+      "purchase_min": "2018-05-01 00:02:11",
+      "purchase_max": "2018-05-31 23:51:24",
+      "max_label_known_at": "2018-06-30 17:35:34"
+    },
+    "validation": {
+      "n": 27074,
+      "purchase_min": "2018-02-01 00:24:55",
+      "purchase_max": "2018-05-31 23:51:24",
+      "max_label_known_at": "2018-06-30 17:35:34"
+    },
+    "calibration": {
+      "n": 6726,
+      "purchase_min": "2018-05-01 00:02:11",
+      "purchase_max": "2018-05-31 23:51:24",
+      "max_label_known_at": "2018-06-30 17:35:34"
+    },
+    "test": {
+      "n": 12507,
+      "purchase_min": "2018-07-01 00:25:07",
+      "purchase_max": "2018-08-29 15:00:37",
+      "max_label_known_at": "2018-10-02 00:18:50"
+    }
+  },
+  "label_cutoffs": {
+    "train": "2018-05-01",
+    "method_fit": "2018-07-01",
+    "validation": "2018-07-01",
+    "calibration": "2018-07-01"
+  },
+  "temporal_folds": [
+    {
+      "fold": "2018-02",
+      "train": {
+        "n": 30852,
+        "purchase_min": "2016-09-15 12:16:38",
+        "purchase_max": "2017-10-31 23:50:58",
+        "max_label_known_at": "2017-11-30 21:04:02"
+      },
+      "calibration": {
+        "n": 5444,
+        "purchase_min": "2017-12-01 00:01:14",
+        "purchase_max": "2017-12-31 23:29:31",
+        "max_label_known_at": "2018-01-31 23:45:08"
+      },
+      "validation": {
+        "n": 6552,
+        "purchase_min": "2018-02-01 00:24:55",
+        "purchase_max": "2018-02-28 23:57:55",
+        "max_label_known_at": "2018-06-13 15:57:49"
+      },
+      "train_label_cutoff": "2017-12-01 00:00:00",
+      "calibration_label_cutoff": "2018-02-01 00:00:00",
+      "selection_label_cutoff": "2018-07-01 00:00:00"
+    },
+    {
+      "fold": "2018-03",
+      "train": {
+        "n": 37865,
+        "purchase_min": "2016-09-15 12:16:38",
+        "purchase_max": "2017-11-30 23:24:16",
+        "max_label_known_at": "2017-12-31 09:26:24"
+      },
+      "calibration": {
+        "n": 6890,
+        "purchase_min": "2018-01-01 02:48:41",
+        "purchase_max": "2018-01-31 23:58:22",
+        "max_label_known_at": "2018-02-28 23:48:36"
+      },
+      "validation": {
+        "n": 7003,
+        "purchase_min": "2018-03-01 00:00:00",
+        "purchase_max": "2018-03-31 23:54:10",
+        "max_label_known_at": "2018-06-20 22:32:03"
+      },
+      "train_label_cutoff": "2018-01-01 00:00:00",
+      "calibration_label_cutoff": "2018-03-01 00:00:00",
+      "selection_label_cutoff": "2018-07-01 00:00:00"
+    },
+    {
+      "fold": "2018-04",
+      "train": {
+        "n": 43609,
+        "purchase_min": "2016-09-15 12:16:38",
+        "purchase_max": "2017-12-31 23:29:31",
+        "max_label_known_at": "2018-01-31 23:45:08"
+      },
+      "calibration": {
+        "n": 6231,
+        "purchase_min": "2018-02-01 00:24:55",
+        "purchase_max": "2018-02-28 23:57:55",
+        "max_label_known_at": "2018-03-31 13:51:44"
+      },
+      "validation": {
+        "n": 6793,
+        "purchase_min": "2018-04-01 00:11:32",
+        "purchase_max": "2018-04-30 23:47:26",
+        "max_label_known_at": "2018-06-29 17:03:25"
+      },
+      "train_label_cutoff": "2018-02-01 00:00:00",
+      "calibration_label_cutoff": "2018-04-01 00:00:00",
+      "selection_label_cutoff": "2018-07-01 00:00:00"
+    },
+    {
+      "fold": "2018-05",
+      "train": {
+        "n": 50564,
+        "purchase_min": "2016-09-15 12:16:38",
+        "purchase_max": "2018-01-31 23:58:22",
+        "max_label_known_at": "2018-02-28 23:48:36"
+      },
+      "calibration": {
+        "n": 6816,
+        "purchase_min": "2018-03-01 00:00:00",
+        "purchase_max": "2018-03-31 23:54:10",
+        "max_label_known_at": "2018-04-30 23:40:42"
+      },
+      "validation": {
+        "n": 6726,
+        "purchase_min": "2018-05-01 00:02:11",
+        "purchase_max": "2018-05-31 23:51:24",
+        "max_label_known_at": "2018-06-30 17:35:34"
+      },
+      "train_label_cutoff": "2018-03-01 00:00:00",
+      "calibration_label_cutoff": "2018-05-01 00:00:00",
+      "selection_label_cutoff": "2018-07-01 00:00:00"
+    }
+  ],
+  "selection_rule": "Four forward months: minimum mean monthly Brier with pooled AP >= 1.05 times prevalence",
+  "ranking_established": true,
+  "selected_calibration_method": "raw",
+  "probability_quality": {
+    "mean_predicted_risk": 0.13630911080934172,
+    "observed_late_rate": 0.04805309026944911,
+    "calibrated_brier": 0.0610479788854276,
+    "constant_brier": 0.04654861616331981,
+    "calibration_prior": 0.06348498364555456,
+    "calibration_prior_brier": 0.04598213411817677,
+    "expected_calibration_error": 0.08825602053989262,
+    "retrospective_accepted": false,
+    "acceptance_gates": {
+      "finite_probabilities": true,
+      "pooled_bias_within_2pp": false,
+      "equal_frequency_ece_within_2pp": false,
+      "brier_beats_calibration_prior": false,
+      "monthly_bias_within_3pp": false
+    },
+    "operational_use_approved": false,
+    "status": "Retrospective revalidation completed with failed acceptance gates; not accepted for operational probability use",
+    "mean_bias_95pct_day_bootstrap": [
+      0.07921441501116479,
+      0.09539538145149123
+    ],
+    "brier_gain_95pct_day_bootstrap": [
+      -0.017315959551854325,
+      -0.013177660991158436
+    ]
+  },
+  "thresholds": {
+    "high": 0.22126496346779453,
+    "medium": 0.12965018167507933,
+    "rule": "Calibration probabilities: 90th and 70th percentiles; ties may increase workload"
+  },
+  "calibration_workload": {
+    "high": 673,
+    "total": 6726
+  },
+  "test": {
+    "n": 12507,
+    "late_rate": 0.04805309026944911,
+    "roc_auc": 0.6136406006786941,
+    "average_precision": 0.07262674418170825,
+    "brier": 0.0610479788854276,
+    "log_loss": 0.24085438328923814,
+    "precision_at_50_daily": 0.05593220338983051,
+    "recall_at_50_daily": 0.27454242928452577,
+    "selected": 2950,
+    "late_captured": 165,
+    "ap_95pct_day_bootstrap": [
+      0.059388820621944304,
+      0.08752365634717152
+    ]
+  }
+}
