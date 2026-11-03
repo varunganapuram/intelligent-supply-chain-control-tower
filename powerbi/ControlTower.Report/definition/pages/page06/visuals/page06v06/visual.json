@@ -1,0 +1,101 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "page06v06",
+  "position": {
+    "x": 650,
+    "y": 180,
+    "z": 6,
+    "width": 610,
+    "height": 420,
+    "tabOrder": 6
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Decisions"
+                    }
+                  },
+                  "Property": "order_id"
+                }
+              },
+              "queryRef": "Decisions.order_id",
+              "nativeQueryRef": "Decisions.order_id"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Decisions"
+                    }
+                  },
+                  "Property": "selected_for_intervention"
+                }
+              },
+              "queryRef": "Decisions.selected_for_intervention",
+              "nativeQueryRef": "Decisions.selected_for_intervention"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Decisions"
+                    }
+                  },
+                  "Property": "expected_net_benefit"
+                }
+              },
+              "queryRef": "Decisions.expected_net_benefit",
+              "nativeQueryRef": "Decisions.expected_net_benefit"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Decisions"
+                    }
+                  },
+                  "Property": "solver_status"
+                }
+              },
+              "queryRef": "Decisions.solver_status",
+              "nativeQueryRef": "Decisions.solver_status"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Scenario decisions: hypothetical financial effects'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

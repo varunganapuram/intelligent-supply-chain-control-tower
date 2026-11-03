@@ -1,0 +1,47 @@
+Total Orders = COUNTROWS(Orders)
+
+Eligible Orders = COUNT(Orders[is_late])
+
+Excluded Orders = [Total Orders]-[Eligible Orders]
+
+Late Orders = SUM(Orders[is_late])
+
+Late Delivery % = DIVIDE([Late Orders],[Eligible Orders])
+
+On-Time Delivery % = IF([Eligible Orders]>0,1-[Late Delivery %])
+
+Average Delivery Days = AVERAGE(Orders[delivery_days])
+
+P90 Delivery Days = PERCENTILEX.INC(FILTER(Orders,NOT ISBLANK(Orders[is_late])),Orders[delivery_days],0.9)
+
+Average Delay Days = AVERAGE(Orders[delay_days])
+
+Item Value = SUM(Orders[item_value])
+
+Reviewed Orders = COUNT(Orders[review_score])
+
+Low Review Orders = CALCULATE(COUNTROWS(Orders),Orders[review_score] IN {1,2})
+
+Dissatisfaction % = DIVIDE([Low Review Orders],[Reviewed Orders])
+
+Single-Seller Eligible = CALCULATE([Eligible Orders],Orders[seller_count]=1)
+
+Single-Seller Late % = DIVIDE(CALCULATE([Late Orders],Orders[seller_count]=1),[Single-Seller Eligible])
+
+Scored Orders = COUNTROWS(Risk)
+
+High Risk Orders = CALCULATE(COUNTROWS(Risk),Risk[risk_category]="High")
+
+Mean Risk = AVERAGE(Risk[risk_probability])
+
+Selected Cases = IF(HASONEVALUE(Scenario[scenario_id]),CALCULATE(COUNTROWS(Decisions),Decisions[selected_for_intervention]=TRUE()))
+
+Assumed Investigation Cost = IF(HASONEVALUE(Scenario[scenario_id]),CALCULATE(SUM(Decisions[intervention_cost]),Decisions[selected_for_intervention]=TRUE()))
+
+Simulated Net Benefit = IF(HASONEVALUE(Scenario[scenario_id]),CALCULATE(SUM(Decisions[expected_net_benefit]),Decisions[selected_for_intervention]=TRUE()))
+
+Model Test AP = MAX(ModelEvaluation[average_precision])
+
+Model Precision at 50 per Day = MAX(ModelEvaluation[precision_at_50_daily])
+
+Scenario Assumed Effectiveness = SELECTEDVALUE(Scenario[effectiveness])

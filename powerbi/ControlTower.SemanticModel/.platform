@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "ControlTower"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "48ad65ad-0f34-442c-bf0b-9ee5724c4f65"
+  }
+}

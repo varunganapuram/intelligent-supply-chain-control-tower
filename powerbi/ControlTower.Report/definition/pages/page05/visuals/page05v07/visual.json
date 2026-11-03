@@ -1,0 +1,59 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "page05v07",
+  "position": {
+    "x": 20,
+    "y": 620,
+    "z": 7,
+    "width": 610,
+    "height": 80,
+    "tabOrder": 7
+  },
+  "visual": {
+    "visualType": "slicer",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Risk"
+                    }
+                  },
+                  "Property": "prediction_as_of"
+                }
+              },
+              "queryRef": "Risk.prediction_as_of",
+              "nativeQueryRef": "Risk.prediction_as_of"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'prediction_as_of'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

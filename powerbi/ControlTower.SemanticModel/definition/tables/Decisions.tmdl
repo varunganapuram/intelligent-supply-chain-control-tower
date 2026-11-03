@@ -1,0 +1,68 @@
+table Decisions
+	lineageTag: 0e6967ef-d790-4517-b6e3-218473648c8e
+
+	column order_id
+		dataType: string
+		lineageTag: caa15399-ae12-4acf-8076-31b08f4ecb1a
+		summarizeBy: none
+		sourceColumn: order_id
+
+	column prediction_as_of
+		dataType: dateTime
+		lineageTag: f514731d-f6e0-4977-8cd1-1b8479c915ef
+		summarizeBy: none
+		sourceColumn: prediction_as_of
+
+	column scenario_id
+		dataType: string
+		lineageTag: bac3660f-8257-40c3-8e12-be6a07786ed2
+		summarizeBy: none
+		sourceColumn: scenario_id
+
+	column replay_day
+		dataType: string
+		lineageTag: 891840ae-5ec3-4ee6-ab66-923edc959be4
+		summarizeBy: none
+		sourceColumn: replay_day
+
+	column selected_for_intervention
+		dataType: boolean
+		lineageTag: 049ae0db-3d65-4f68-a319-ade0c30fedcd
+		summarizeBy: none
+		sourceColumn: selected_for_intervention
+
+	column expected_net_benefit
+		dataType: double
+		lineageTag: 189c8897-c1fa-47bc-a3ff-bd47e75e9220
+		summarizeBy: none
+		sourceColumn: expected_net_benefit
+
+	column intervention_cost
+		dataType: double
+		lineageTag: 28a80ed0-14b1-44ea-bfd9-aa2736486330
+		summarizeBy: none
+		sourceColumn: intervention_cost
+
+	column assumed_delay_impact
+		dataType: double
+		lineageTag: 1b5b6201-2551-44ec-becc-f90393e5d1a2
+		summarizeBy: none
+		sourceColumn: assumed_delay_impact
+
+	column solver_status
+		dataType: string
+		lineageTag: d334bbd1-e422-477c-995b-cf31ad58acf1
+		summarizeBy: none
+		sourceColumn: solver_status
+
+	partition Decisions = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "fct_intervention_scenario.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    EmptyToNull = Table.ReplaceValue(Headers, "", null, Replacer.ReplaceValue, Table.ColumnNames(Headers)),
+				    Typed = Table.TransformColumnTypes(EmptyToNull, {{"order_id", type text}, {"prediction_as_of", type datetime}, {"scenario_id", type text}, {"replay_day", type text}, {"selected_for_intervention", type logical}, {"expected_net_benefit", type number}, {"intervention_cost", type number}, {"assumed_delay_impact", type number}, {"solver_status", type text}}, "en-US")
+				in
+				    Typed
+

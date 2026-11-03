@@ -1,0 +1,9 @@
+{
+  "native_desktop_data_validation": "passed",
+  "native_dax_comparisons": 6101,
+  "native_pixel_review": "not claimed: Windows capture unavailable",
+  "revalidation": "completed; acceptance gates failed",
+  "operational_use_approved": false,
+  "repository": "https://github.com/varunganapuram/intelligent-supply-chain-control-tower",
+  "python_tests": 19
+}

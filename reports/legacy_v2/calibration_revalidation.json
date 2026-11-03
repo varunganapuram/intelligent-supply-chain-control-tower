@@ -1,0 +1,32 @@
+{
+  "protocol": "docs/revalidation_protocol.md",
+  "model_version": "purchase-v2-frozen-20180701",
+  "evaluation_purchases": "July-August 2018",
+  "previously_examined_historical_data": true,
+  "independent_prospective_test": false,
+  "mean_predicted_risk": 0.08756401973839817,
+  "observed_late_rate": 0.04805309026944911,
+  "calibrated_brier": 0.04940793497099579,
+  "constant_brier": 0.04577171602566747,
+  "calibration_prior": 0.053850136844441156,
+  "calibration_prior_brier": 0.045777596533997905,
+  "expected_calibration_error": 0.039534479138875755,
+  "retrospective_accepted": false,
+  "acceptance_gates": {
+    "finite_probabilities": true,
+    "pooled_bias_within_2pp": false,
+    "equal_frequency_ece_within_2pp": false,
+    "brier_beats_calibration_prior": false,
+    "monthly_bias_within_3pp": false
+  },
+  "operational_use_approved": false,
+  "status": "Retrospective revalidation completed with failed acceptance gates; not accepted for operational probability use",
+  "mean_bias_95pct_day_bootstrap": [
+    0.030281197872285743,
+    0.04700831693504592
+  ],
+  "brier_gain_95pct_day_bootstrap": [
+    -0.0047912971990261306,
+    -0.002697539614264706
+  ]
+}

@@ -1,0 +1,115 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "page05v06",
+  "position": {
+    "x": 650,
+    "y": 180,
+    "z": 6,
+    "width": 610,
+    "height": 420,
+    "tabOrder": 6
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Risk"
+                    }
+                  },
+                  "Property": "order_id"
+                }
+              },
+              "queryRef": "Risk.order_id",
+              "nativeQueryRef": "Risk.order_id"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Risk"
+                    }
+                  },
+                  "Property": "prediction_as_of"
+                }
+              },
+              "queryRef": "Risk.prediction_as_of",
+              "nativeQueryRef": "Risk.prediction_as_of"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Risk"
+                    }
+                  },
+                  "Property": "risk_probability"
+                }
+              },
+              "queryRef": "Risk.risk_probability",
+              "nativeQueryRef": "Risk.risk_probability"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Risk"
+                    }
+                  },
+                  "Property": "risk_category"
+                }
+              },
+              "queryRef": "Risk.risk_category",
+              "nativeQueryRef": "Risk.risk_category"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Risk"
+                    }
+                  },
+                  "Property": "risk_rank"
+                }
+              },
+              "queryRef": "Risk.risk_rank",
+              "nativeQueryRef": "Risk.risk_rank"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Purchase-time risk queue'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

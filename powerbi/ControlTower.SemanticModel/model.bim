@@ -1,0 +1,856 @@
+{
+  "name": "ControlTower",
+  "compatibilityLevel": 1600,
+  "model": {
+    "culture": "en-US",
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "expressions": [
+      {
+        "name": "DataFolder",
+        "kind": "m",
+        "expression": "\"C:/Users/SYS/Documents/Codex/2026-11-03/co/outputs/intelligent-supply-chain-control-tower/reports/\" meta [IsParameterQuery=true, Type=\"Text\", IsParameterQueryRequired=true]"
+      }
+    ],
+    "tables": [
+      {
+        "name": "Orders",
+        "columns": [
+          {
+            "name": "order_id",
+            "dataType": "string",
+            "sourceColumn": "order_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "customer_id",
+            "dataType": "string",
+            "sourceColumn": "customer_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "order_status",
+            "dataType": "string",
+            "sourceColumn": "order_status",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "order_purchase_timestamp",
+            "dataType": "dateTime",
+            "sourceColumn": "order_purchase_timestamp",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "order_approved_at",
+            "dataType": "dateTime",
+            "sourceColumn": "order_approved_at",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "order_delivered_carrier_date",
+            "dataType": "dateTime",
+            "sourceColumn": "order_delivered_carrier_date",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "order_delivered_customer_date",
+            "dataType": "dateTime",
+            "sourceColumn": "order_delivered_customer_date",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "order_estimated_delivery_date",
+            "dataType": "dateTime",
+            "sourceColumn": "order_estimated_delivery_date",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "purchase_date",
+            "dataType": "dateTime",
+            "sourceColumn": "purchase_date",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "customer_state",
+            "dataType": "string",
+            "sourceColumn": "customer_state",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "item_count",
+            "dataType": "double",
+            "sourceColumn": "item_count",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "seller_count",
+            "dataType": "double",
+            "sourceColumn": "seller_count",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "item_value",
+            "dataType": "double",
+            "sourceColumn": "item_value",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "freight_value",
+            "dataType": "double",
+            "sourceColumn": "freight_value",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "weight_g",
+            "dataType": "double",
+            "sourceColumn": "weight_g",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "volume_cm3",
+            "dataType": "double",
+            "sourceColumn": "volume_cm3",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "distance_km",
+            "dataType": "double",
+            "sourceColumn": "distance_km",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "first_shipping_limit",
+            "dataType": "dateTime",
+            "sourceColumn": "first_shipping_limit",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "primary_seller_id",
+            "dataType": "string",
+            "sourceColumn": "primary_seller_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "primary_category",
+            "dataType": "string",
+            "sourceColumn": "primary_category",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "primary_seller_state",
+            "dataType": "string",
+            "sourceColumn": "primary_seller_state",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "payment_value",
+            "dataType": "double",
+            "sourceColumn": "payment_value",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "payment_count",
+            "dataType": "double",
+            "sourceColumn": "payment_count",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "review_score",
+            "dataType": "double",
+            "sourceColumn": "review_score",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "eligible_delivery",
+            "dataType": "boolean",
+            "sourceColumn": "eligible_delivery",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "is_late",
+            "dataType": "double",
+            "sourceColumn": "is_late",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "delivery_days",
+            "dataType": "double",
+            "sourceColumn": "delivery_days",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "delay_days",
+            "dataType": "double",
+            "sourceColumn": "delay_days",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "promised_days",
+            "dataType": "double",
+            "sourceColumn": "promised_days",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "handoff_days",
+            "dataType": "double",
+            "sourceColumn": "handoff_days",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "transit_days",
+            "dataType": "double",
+            "sourceColumn": "transit_days",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "handoff_after_item_deadline",
+            "dataType": "double",
+            "sourceColumn": "handoff_after_item_deadline",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Orders",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(DataFolder & \"fct_order.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    EmptyToNull = Table.ReplaceValue(Headers, \"\", null, Replacer.ReplaceValue, Table.ColumnNames(Headers)),",
+                "    Typed = Table.TransformColumnTypes(EmptyToNull, {{\"order_id\", type text}, {\"customer_id\", type text}, {\"order_status\", type text}, {\"order_purchase_timestamp\", type datetime}, {\"order_approved_at\", type datetime}, {\"order_delivered_carrier_date\", type datetime}, {\"order_delivered_customer_date\", type datetime}, {\"order_estimated_delivery_date\", type datetime}, {\"purchase_date\", type datetime}, {\"customer_state\", type text}, {\"item_count\", type number}, {\"seller_count\", type number}, {\"item_value\", type number}, {\"freight_value\", type number}, {\"weight_g\", type number}, {\"volume_cm3\", type number}, {\"distance_km\", type number}, {\"first_shipping_limit\", type datetime}, {\"primary_seller_id\", type text}, {\"primary_category\", type text}, {\"primary_seller_state\", type text}, {\"payment_value\", type number}, {\"payment_count\", type number}, {\"review_score\", type number}, {\"eligible_delivery\", type logical}, {\"is_late\", type number}, {\"delivery_days\", type number}, {\"delay_days\", type number}, {\"promised_days\", type number}, {\"handoff_days\", type number}, {\"transit_days\", type number}, {\"handoff_after_item_deadline\", type number}}, \"en-US\")",
+                "in",
+                "    Typed"
+              ]
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Total Orders",
+            "expression": "COUNTROWS(Orders)",
+            "formatString": "#,0",
+            "description": "See docs/kpi_dictionary.md; simulation measures are hypothetical."
+          },
+          {
+            "name": "Eligible Orders",
+            "expression": "COUNT(Orders[is_late])",
+            "formatString": "#,0",
+            "description": "See docs/kpi_dictionary.md; simulation measures are hypothetical."
+          },
+          {
+            "name": "Excluded Orders",
+            "expression": "[Total Orders]-[Eligible Orders]",
+            "formatString": "#,0",
+            "description": "See docs/kpi_dictionary.md; simulation measures are hypothetical."
+          },
+          {
+            "name": "Late Orders",
+            "expression": "SUM(Orders[is_late])",
+            "formatString": "#,0",
+            "description": "See docs/kpi_dictionary.md; simulation measures are hypothetical."
+          },
+          {
+            "name": "Late Delivery %",
+            "expression": "DIVIDE([Late Orders],[Eligible Orders])",
+            "formatString": "0.0%",
+            "description": "See docs/kpi_dictionary.md; simulation measures are hypothetical."
+          },
+          {
+            "name": "On-Time Delivery %",
+            "expression": "IF([Eligible Orders]>0,1-[Late Delivery %])",
+            "formatString": "0.0%",
+            "description": "See docs/kpi_dictionary.md; simulation measures are hypothetical."
+          },
+          {
+            "name": "Average Delivery Days",
+            "expression": "AVERAGE(Orders[delivery_days])",
+            "formatString": "0.0",
+            "description": "See docs/kpi_dictionary.md; simulation measures are hypothetical."
+          },
+          {
+            "name": "P90 Delivery Days",
+            "expression": "PERCENTILEX.INC(FILTER(Orders,NOT ISBLANK(Orders[is_late])),Orders[delivery_days],0.9)",
+            "formatString": "0.0",
+            "description": "See docs/kpi_dictionary.md; simulation measures are hypothetical."
+          },
+          {
+            "name": "Average Delay Days",
+            "expression": "AVERAGE(Orders[delay_days])",
+            "formatString": "0.0",
+            "description": "See docs/kpi_dictionary.md; simulation measures are hypothetical."
+          },
+          {
+            "name": "Item Value",
+            "expression": "SUM(Orders[item_value])",
+            "formatString": "R$ #,0.00",
+            "description": "See docs/kpi_dictionary.md; simulation measures are hypothetical."
+          },
+          {
+            "name": "Reviewed Orders",
+            "expression": "COUNT(Orders[review_score])",
+            "formatString": "#,0",
+            "description": "See docs/kpi_dictionary.md; simulation measures are hypothetical."
+          },
+          {
+            "name": "Low Review Orders",
+            "expression": "CALCULATE(COUNTROWS(Orders),Orders[review_score] IN {1,2})",
+            "formatString": "#,0",
+            "description": "See docs/kpi_dictionary.md; simulation measures are hypothetical."
+          },
+          {
+            "name": "Dissatisfaction %",
+            "expression": "DIVIDE([Low Review Orders],[Reviewed Orders])",
+            "formatString": "0.0%",
+            "description": "See docs/kpi_dictionary.md; simulation measures are hypothetical."
+          },
+          {
+            "name": "Single-Seller Eligible",
+            "expression": "CALCULATE([Eligible Orders],Orders[seller_count]=1)",
+            "formatString": "#,0",
+            "description": "See docs/kpi_dictionary.md; simulation measures are hypothetical."
+          },
+          {
+            "name": "Single-Seller Late %",
+            "expression": "DIVIDE(CALCULATE([Late Orders],Orders[seller_count]=1),[Single-Seller Eligible])",
+            "formatString": "0.0%",
+            "description": "See docs/kpi_dictionary.md; simulation measures are hypothetical."
+          },
+          {
+            "name": "Scored Orders",
+            "expression": "COUNTROWS(Risk)",
+            "formatString": "#,0",
+            "description": "See docs/kpi_dictionary.md; simulation measures are hypothetical."
+          },
+          {
+            "name": "High Risk Orders",
+            "expression": "CALCULATE(COUNTROWS(Risk),Risk[risk_category]=\"High\")",
+            "formatString": "#,0",
+            "description": "See docs/kpi_dictionary.md; simulation measures are hypothetical."
+          },
+          {
+            "name": "Mean Risk",
+            "expression": "AVERAGE(Risk[risk_probability])",
+            "formatString": "0.0%",
+            "description": "See docs/kpi_dictionary.md; simulation measures are hypothetical."
+          },
+          {
+            "name": "Selected Cases",
+            "expression": "IF(HASONEVALUE(Scenario[scenario_id]),CALCULATE(COUNTROWS(Decisions),Decisions[selected_for_intervention]=TRUE()))",
+            "formatString": "#,0",
+            "description": "See docs/kpi_dictionary.md; simulation measures are hypothetical."
+          },
+          {
+            "name": "Assumed Investigation Cost",
+            "expression": "IF(HASONEVALUE(Scenario[scenario_id]),CALCULATE(SUM(Decisions[intervention_cost]),Decisions[selected_for_intervention]=TRUE()))",
+            "formatString": "R$ #,0.00",
+            "description": "See docs/kpi_dictionary.md; simulation measures are hypothetical."
+          },
+          {
+            "name": "Simulated Net Benefit",
+            "expression": "IF(HASONEVALUE(Scenario[scenario_id]),CALCULATE(SUM(Decisions[expected_net_benefit]),Decisions[selected_for_intervention]=TRUE()))",
+            "formatString": "R$ #,0.00",
+            "description": "See docs/kpi_dictionary.md; simulation measures are hypothetical."
+          },
+          {
+            "name": "Model Test AP",
+            "expression": "MAX(ModelEvaluation[average_precision])",
+            "formatString": "0.000",
+            "description": "See docs/kpi_dictionary.md; simulation measures are hypothetical."
+          },
+          {
+            "name": "Model Precision at 50 per Day",
+            "expression": "MAX(ModelEvaluation[precision_at_50_daily])",
+            "formatString": "0.0%",
+            "description": "See docs/kpi_dictionary.md; simulation measures are hypothetical."
+          },
+          {
+            "name": "Scenario Assumed Effectiveness",
+            "expression": "SELECTEDVALUE(Scenario[effectiveness])",
+            "formatString": "0%",
+            "description": "See docs/kpi_dictionary.md; simulation measures are hypothetical."
+          }
+        ]
+      },
+      {
+        "name": "Date",
+        "columns": [
+          {
+            "name": "date_key",
+            "dataType": "dateTime",
+            "sourceColumn": "date_key",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "year",
+            "dataType": "double",
+            "sourceColumn": "year",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "month",
+            "dataType": "double",
+            "sourceColumn": "month",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "weekday",
+            "dataType": "double",
+            "sourceColumn": "weekday",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "year_month",
+            "dataType": "string",
+            "sourceColumn": "year_month",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Date",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(DataFolder & \"dim_date.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    EmptyToNull = Table.ReplaceValue(Headers, \"\", null, Replacer.ReplaceValue, Table.ColumnNames(Headers)),",
+                "    Typed = Table.TransformColumnTypes(EmptyToNull, {{\"date_key\", type datetime}, {\"year\", type number}, {\"month\", type number}, {\"weekday\", type number}, {\"year_month\", type text}}, \"en-US\")",
+                "in",
+                "    Typed"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Sellers",
+        "columns": [
+          {
+            "name": "seller_id",
+            "dataType": "string",
+            "sourceColumn": "seller_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "seller_zip_code_prefix",
+            "dataType": "string",
+            "sourceColumn": "seller_zip_code_prefix",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "seller_city",
+            "dataType": "string",
+            "sourceColumn": "seller_city",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "seller_state",
+            "dataType": "string",
+            "sourceColumn": "seller_state",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "latitude",
+            "dataType": "double",
+            "sourceColumn": "latitude",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "longitude",
+            "dataType": "double",
+            "sourceColumn": "longitude",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Sellers",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(DataFolder & \"dim_seller.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    EmptyToNull = Table.ReplaceValue(Headers, \"\", null, Replacer.ReplaceValue, Table.ColumnNames(Headers)),",
+                "    Typed = Table.TransformColumnTypes(EmptyToNull, {{\"seller_id\", type text}, {\"seller_zip_code_prefix\", type text}, {\"seller_city\", type text}, {\"seller_state\", type text}, {\"latitude\", type number}, {\"longitude\", type number}}, \"en-US\")",
+                "in",
+                "    Typed"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Risk",
+        "columns": [
+          {
+            "name": "order_id",
+            "dataType": "string",
+            "sourceColumn": "order_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "prediction_as_of",
+            "dataType": "dateTime",
+            "sourceColumn": "prediction_as_of",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "scoring_run_id",
+            "dataType": "string",
+            "sourceColumn": "scoring_run_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "model_version",
+            "dataType": "string",
+            "sourceColumn": "model_version",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "model_available_at",
+            "dataType": "dateTime",
+            "sourceColumn": "model_available_at",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "risk_probability",
+            "dataType": "double",
+            "sourceColumn": "risk_probability",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "risk_category",
+            "dataType": "string",
+            "sourceColumn": "risk_category",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "risk_rank",
+            "dataType": "double",
+            "sourceColumn": "risk_rank",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Risk",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(DataFolder & \"fct_order_risk.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    EmptyToNull = Table.ReplaceValue(Headers, \"\", null, Replacer.ReplaceValue, Table.ColumnNames(Headers)),",
+                "    Typed = Table.TransformColumnTypes(EmptyToNull, {{\"order_id\", type text}, {\"prediction_as_of\", type datetime}, {\"scoring_run_id\", type text}, {\"model_version\", type text}, {\"model_available_at\", type datetime}, {\"risk_probability\", type number}, {\"risk_category\", type text}, {\"risk_rank\", type number}}, \"en-US\")",
+                "in",
+                "    Typed"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Decisions",
+        "columns": [
+          {
+            "name": "order_id",
+            "dataType": "string",
+            "sourceColumn": "order_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "prediction_as_of",
+            "dataType": "dateTime",
+            "sourceColumn": "prediction_as_of",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "scenario_id",
+            "dataType": "string",
+            "sourceColumn": "scenario_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "replay_day",
+            "dataType": "string",
+            "sourceColumn": "replay_day",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "selected_for_intervention",
+            "dataType": "boolean",
+            "sourceColumn": "selected_for_intervention",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "expected_net_benefit",
+            "dataType": "double",
+            "sourceColumn": "expected_net_benefit",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "intervention_cost",
+            "dataType": "double",
+            "sourceColumn": "intervention_cost",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "assumed_delay_impact",
+            "dataType": "double",
+            "sourceColumn": "assumed_delay_impact",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "solver_status",
+            "dataType": "string",
+            "sourceColumn": "solver_status",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Decisions",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(DataFolder & \"fct_intervention_scenario.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    EmptyToNull = Table.ReplaceValue(Headers, \"\", null, Replacer.ReplaceValue, Table.ColumnNames(Headers)),",
+                "    Typed = Table.TransformColumnTypes(EmptyToNull, {{\"order_id\", type text}, {\"prediction_as_of\", type datetime}, {\"scenario_id\", type text}, {\"replay_day\", type text}, {\"selected_for_intervention\", type logical}, {\"expected_net_benefit\", type number}, {\"intervention_cost\", type number}, {\"assumed_delay_impact\", type number}, {\"solver_status\", type text}}, \"en-US\")",
+                "in",
+                "    Typed"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Scenario",
+        "columns": [
+          {
+            "name": "scenario_id",
+            "dataType": "string",
+            "sourceColumn": "scenario_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "scenario_name",
+            "dataType": "string",
+            "sourceColumn": "scenario_name",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "capacity",
+            "dataType": "double",
+            "sourceColumn": "capacity",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "budget",
+            "dataType": "double",
+            "sourceColumn": "budget",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "cost",
+            "dataType": "double",
+            "sourceColumn": "cost",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "effectiveness",
+            "dataType": "double",
+            "sourceColumn": "effectiveness",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "impact",
+            "dataType": "double",
+            "sourceColumn": "impact",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "value_fraction",
+            "dataType": "double",
+            "sourceColumn": "value_fraction",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "region_cap",
+            "dataType": "double",
+            "sourceColumn": "region_cap",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "interpretation",
+            "dataType": "string",
+            "sourceColumn": "interpretation",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Scenario",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(DataFolder & \"dim_scenario.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    EmptyToNull = Table.ReplaceValue(Headers, \"\", null, Replacer.ReplaceValue, Table.ColumnNames(Headers)),",
+                "    Typed = Table.TransformColumnTypes(EmptyToNull, {{\"scenario_id\", type text}, {\"scenario_name\", type text}, {\"capacity\", type number}, {\"budget\", type number}, {\"cost\", type number}, {\"effectiveness\", type number}, {\"impact\", type number}, {\"value_fraction\", type number}, {\"region_cap\", type number}, {\"interpretation\", type text}}, \"en-US\")",
+                "in",
+                "    Typed"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "ModelEvaluation",
+        "columns": [
+          {
+            "name": "n",
+            "dataType": "double",
+            "sourceColumn": "n",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "late_rate",
+            "dataType": "double",
+            "sourceColumn": "late_rate",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "roc_auc",
+            "dataType": "double",
+            "sourceColumn": "roc_auc",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "average_precision",
+            "dataType": "double",
+            "sourceColumn": "average_precision",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "brier",
+            "dataType": "double",
+            "sourceColumn": "brier",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "log_loss",
+            "dataType": "double",
+            "sourceColumn": "log_loss",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "precision_at_50_daily",
+            "dataType": "double",
+            "sourceColumn": "precision_at_50_daily",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "recall_at_50_daily",
+            "dataType": "double",
+            "sourceColumn": "recall_at_50_daily",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "selected",
+            "dataType": "double",
+            "sourceColumn": "selected",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "late_captured",
+            "dataType": "double",
+            "sourceColumn": "late_captured",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "ModelEvaluation",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(DataFolder & \"model_evaluation.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    EmptyToNull = Table.ReplaceValue(Headers, \"\", null, Replacer.ReplaceValue, Table.ColumnNames(Headers)),",
+                "    Typed = Table.TransformColumnTypes(EmptyToNull, {{\"n\", type number}, {\"late_rate\", type number}, {\"roc_auc\", type number}, {\"average_precision\", type number}, {\"brier\", type number}, {\"log_loss\", type number}, {\"precision_at_50_daily\", type number}, {\"recall_at_50_daily\", type number}, {\"selected\", type number}, {\"late_captured\", type number}}, \"en-US\")",
+                "in",
+                "    Typed"
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "c2686001-2c17-51f3-85e0-aa7b18494476",
+        "fromTable": "Orders",
+        "fromColumn": "purchase_date",
+        "toTable": "Date",
+        "toColumn": "date_key",
+        "fromCardinality": "many",
+        "toCardinality": "one",
+        "crossFilteringBehavior": "oneDirection"
+      },
+      {
+        "name": "1332b809-7cc5-5a05-9f6a-194f154f9e95",
+        "fromTable": "Orders",
+        "fromColumn": "primary_seller_id",
+        "toTable": "Sellers",
+        "toColumn": "seller_id",
+        "fromCardinality": "many",
+        "toCardinality": "one",
+        "crossFilteringBehavior": "oneDirection"
+      },
+      {
+        "name": "67c191a2-35de-57fc-a518-305270781f69",
+        "fromTable": "Risk",
+        "fromColumn": "order_id",
+        "toTable": "Orders",
+        "toColumn": "order_id",
+        "fromCardinality": "many",
+        "toCardinality": "one",
+        "crossFilteringBehavior": "oneDirection"
+      },
+      {
+        "name": "c2f561bf-b385-5a05-909c-09ee31348197",
+        "fromTable": "Decisions",
+        "fromColumn": "order_id",
+        "toTable": "Orders",
+        "toColumn": "order_id",
+        "fromCardinality": "many",
+        "toCardinality": "one",
+        "crossFilteringBehavior": "oneDirection"
+      },
+      {
+        "name": "d2968df9-b21e-5323-b3c5-2fb43433a39b",
+        "fromTable": "Decisions",
+        "fromColumn": "scenario_id",
+        "toTable": "Scenario",
+        "toColumn": "scenario_id",
+        "fromCardinality": "many",
+        "toCardinality": "one",
+        "crossFilteringBehavior": "oneDirection"
+      }
+    ]
+  }
+}

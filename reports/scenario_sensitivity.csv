@@ -1,0 +1,4 @@
+scenario_id,scenario_name,capacity,budget,cost,effectiveness,impact,value_fraction,region_cap,interpretation,selected,assumed_cost,hypothetical_net_benefit
+71111bc56997,Assumed effectiveness 10%,50,500.0,5.0,0.1,150.0,0.25,50,Hypothetical BRL amounts; no measured intervention effects,282,1410.0,769.296550642564
+8736db5e2293,Assumed effectiveness 20%,50,500.0,5.0,0.2,150.0,0.25,50,Hypothetical BRL amounts; no measured intervention effects,1647,8235.0,5274.808424798407
+aa4d819c7074,Assumed effectiveness 30%,50,500.0,5.0,0.3,150.0,0.25,50,Hypothetical BRL amounts; no measured intervention effects,2518,12590.0,13166.577307428859

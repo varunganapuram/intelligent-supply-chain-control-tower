@@ -1,0 +1,19 @@
+{
+  "offline_html_pages": 6,
+  "html_errors": [],
+  "executed_notebook_code_cells": {
+    "01_data_profiling.ipynb": 6,
+    "02_sla_analysis.ipynb": 9,
+    "03_model_diagnostics.ipynb": 9
+  },
+  "video_full_decode": "passed",
+  "pytest": {
+    "name": "pytest",
+    "errors": "0",
+    "failures": "0",
+    "skipped": "0",
+    "tests": "19",
+    "time": "17.947",
+    "timestamp": "2026-11-03T15:04:36.056383+05:30"
+  }
+}

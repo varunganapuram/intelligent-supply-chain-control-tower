@@ -1,0 +1,12 @@
+supply_chain:
+  target: local
+  outputs:
+    local:
+      type: postgres
+      host: "{{ env_var('PGHOST', '127.0.0.1') }}"
+      port: "{{ env_var('PGPORT', '55432') | int }}"
+      user: "{{ env_var('PGUSER', 'control_tower') }}"
+      password: "{{ env_var('PGPASSWORD') }}"
+      dbname: "{{ env_var('PGDATABASE', 'control_tower') }}"
+      schema: marts
+      threads: 4

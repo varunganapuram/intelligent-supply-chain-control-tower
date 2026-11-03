@@ -1,0 +1,13 @@
+{
+  "asof_sql_python_orders_verified": 100,
+  "artifacts_present": {
+    "reports/kpis.json": true,
+    "reports/model_evaluation.json": true,
+    "reports/dbt_run_results.json": true,
+    "reports/browser_checks.json": true,
+    "reports/powerbi_validation.json": true,
+    "reports/pipeline_run.json": true,
+    "artifacts/delivery_model.joblib": true,
+    "data/processed/fct_order.parquet": true
+  }
+}

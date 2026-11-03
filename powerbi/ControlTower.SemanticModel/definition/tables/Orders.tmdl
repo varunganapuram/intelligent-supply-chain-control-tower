@@ -1,0 +1,326 @@
+table Orders
+	lineageTag: eb6190e5-840e-49c0-9df9-765265e949da
+
+	/// See docs/kpi_dictionary.md; simulation measures are hypothetical.
+	measure 'Total Orders' = COUNTROWS(Orders)
+		formatString: #,0
+		lineageTag: 57efc83a-b570-4772-b691-8c0d2ebf55f6
+
+	/// See docs/kpi_dictionary.md; simulation measures are hypothetical.
+	measure 'Eligible Orders' = COUNT(Orders[is_late])
+		formatString: #,0
+		lineageTag: e061c120-7efb-4b50-b15d-6a4b8b3179c2
+
+	/// See docs/kpi_dictionary.md; simulation measures are hypothetical.
+	measure 'Excluded Orders' = [Total Orders]-[Eligible Orders]
+		formatString: #,0
+		lineageTag: e2a3694f-770e-4111-b86b-7cce5f064001
+
+	/// See docs/kpi_dictionary.md; simulation measures are hypothetical.
+	measure 'Late Orders' = SUM(Orders[is_late])
+		formatString: #,0
+		lineageTag: c2d2577a-4db5-415e-bc65-f40054acf4f7
+
+	/// See docs/kpi_dictionary.md; simulation measures are hypothetical.
+	measure 'Late Delivery %' = DIVIDE([Late Orders],[Eligible Orders])
+		formatString: 0.0%
+		lineageTag: c6543be0-c684-4a22-b70f-bb6be7a47064
+
+	/// See docs/kpi_dictionary.md; simulation measures are hypothetical.
+	measure 'On-Time Delivery %' = IF([Eligible Orders]>0,1-[Late Delivery %])
+		formatString: 0.0%
+		lineageTag: cc3a18c2-f71d-4e20-8fda-945f486a870f
+
+	/// See docs/kpi_dictionary.md; simulation measures are hypothetical.
+	measure 'Average Delivery Days' = AVERAGE(Orders[delivery_days])
+		formatString: 0.0
+		lineageTag: 7666f999-80b9-479c-bd4d-a445e241d957
+
+	/// See docs/kpi_dictionary.md; simulation measures are hypothetical.
+	measure 'P90 Delivery Days' = PERCENTILEX.INC(FILTER(Orders,NOT ISBLANK(Orders[is_late])),Orders[delivery_days],0.9)
+		formatString: 0.0
+		lineageTag: 0adb7514-470a-4a80-be1e-25067768a71f
+
+	/// See docs/kpi_dictionary.md; simulation measures are hypothetical.
+	measure 'Average Delay Days' = AVERAGE(Orders[delay_days])
+		formatString: 0.0
+		lineageTag: a5ecdcff-dcd8-40c3-b8ce-bf170322d978
+
+	/// See docs/kpi_dictionary.md; simulation measures are hypothetical.
+	measure 'Item Value' = SUM(Orders[item_value])
+		formatString: R$ #,0.00
+		lineageTag: 9f599c9a-60a3-4fa8-82d1-79b3282d584b
+
+	/// See docs/kpi_dictionary.md; simulation measures are hypothetical.
+	measure 'Reviewed Orders' = COUNT(Orders[review_score])
+		formatString: #,0
+		lineageTag: 86eb34bd-0675-4f46-b330-c2f1f49c26e1
+
+	/// See docs/kpi_dictionary.md; simulation measures are hypothetical.
+	measure 'Low Review Orders' = CALCULATE(COUNTROWS(Orders),Orders[review_score] IN {1,2})
+		formatString: #,0
+		lineageTag: 0a9f7287-6bc7-48a9-8cef-e826aa0daf4b
+
+	/// See docs/kpi_dictionary.md; simulation measures are hypothetical.
+	measure 'Dissatisfaction %' = DIVIDE([Low Review Orders],[Reviewed Orders])
+		formatString: 0.0%
+		lineageTag: f14c4774-4a4c-4014-8d8b-e189e397e1c8
+
+	/// See docs/kpi_dictionary.md; simulation measures are hypothetical.
+	measure 'Single-Seller Eligible' = CALCULATE([Eligible Orders],Orders[seller_count]=1)
+		formatString: #,0
+		lineageTag: cba65c7d-ff9d-4484-9187-7bf8b6e8f17d
+
+	/// See docs/kpi_dictionary.md; simulation measures are hypothetical.
+	measure 'Single-Seller Late %' = DIVIDE(CALCULATE([Late Orders],Orders[seller_count]=1),[Single-Seller Eligible])
+		formatString: 0.0%
+		lineageTag: c55dd065-fcb0-4487-818d-9c6e1881af57
+
+	/// See docs/kpi_dictionary.md; simulation measures are hypothetical.
+	measure 'Scored Orders' = COUNTROWS(Risk)
+		formatString: #,0
+		lineageTag: 11593d03-68e7-4dc0-a979-6eb2dfcb9698
+
+	/// See docs/kpi_dictionary.md; simulation measures are hypothetical.
+	measure 'High Risk Orders' = CALCULATE(COUNTROWS(Risk),Risk[risk_category]="High")
+		formatString: #,0
+		lineageTag: 07b2f569-4811-4458-821b-b7d95b768d36
+
+	/// See docs/kpi_dictionary.md; simulation measures are hypothetical.
+	measure 'Mean Risk' = AVERAGE(Risk[risk_probability])
+		formatString: 0.0%
+		lineageTag: 7d698ae0-330e-4669-af48-1e9073db5f62
+
+	/// See docs/kpi_dictionary.md; simulation measures are hypothetical.
+	measure 'Selected Cases' = IF(HASONEVALUE(Scenario[scenario_id]),CALCULATE(COUNTROWS(Decisions),Decisions[selected_for_intervention]=TRUE()))
+		formatString: #,0
+		lineageTag: 3d4feeaf-e7e6-4246-9c52-dbacc0888d64
+
+	/// See docs/kpi_dictionary.md; simulation measures are hypothetical.
+	measure 'Assumed Investigation Cost' = IF(HASONEVALUE(Scenario[scenario_id]),CALCULATE(SUM(Decisions[intervention_cost]),Decisions[selected_for_intervention]=TRUE()))
+		formatString: R$ #,0.00
+		lineageTag: 62da7182-67b1-45fe-90fd-35b9b215eedc
+
+	/// See docs/kpi_dictionary.md; simulation measures are hypothetical.
+	measure 'Simulated Net Benefit' = IF(HASONEVALUE(Scenario[scenario_id]),CALCULATE(SUM(Decisions[expected_net_benefit]),Decisions[selected_for_intervention]=TRUE()))
+		formatString: R$ #,0.00
+		lineageTag: a39b93b5-9419-4029-a79e-a5ca3df7df0c
+
+	/// See docs/kpi_dictionary.md; simulation measures are hypothetical.
+	measure 'Model Test AP' = MAX(ModelEvaluation[average_precision])
+		formatString: 0.000
+		lineageTag: 28dd8def-d2aa-4dec-b325-00f74c138a17
+
+	/// See docs/kpi_dictionary.md; simulation measures are hypothetical.
+	measure 'Model Precision at 50 per Day' = MAX(ModelEvaluation[precision_at_50_daily])
+		formatString: 0.0%
+		lineageTag: ad98ac99-a862-4454-acf1-d4d31753cb13
+
+	/// See docs/kpi_dictionary.md; simulation measures are hypothetical.
+	measure 'Scenario Assumed Effectiveness' = SELECTEDVALUE(Scenario[effectiveness])
+		formatString: 0%
+		lineageTag: 7051951b-788f-411e-a746-e4500db19d46
+
+	column order_id
+		dataType: string
+		lineageTag: 46147c57-9c88-4a56-9b21-7fe268d880ab
+		summarizeBy: none
+		sourceColumn: order_id
+
+	column customer_id
+		dataType: string
+		lineageTag: 424b2908-5af0-4b1d-89fd-fe2f95370c7a
+		summarizeBy: none
+		sourceColumn: customer_id
+
+	column order_status
+		dataType: string
+		lineageTag: 537cecfe-ef9a-4bb5-9e06-414c60cc2c10
+		summarizeBy: none
+		sourceColumn: order_status
+
+	column order_purchase_timestamp
+		dataType: dateTime
+		lineageTag: 5045029a-7bd3-4eec-9cfe-50d15d0e4a47
+		summarizeBy: none
+		sourceColumn: order_purchase_timestamp
+
+	column order_approved_at
+		dataType: dateTime
+		lineageTag: 9ce102a8-e299-46fe-9e29-2440180d1868
+		summarizeBy: none
+		sourceColumn: order_approved_at
+
+	column order_delivered_carrier_date
+		dataType: dateTime
+		lineageTag: 4695d7ca-5205-480e-ae29-cfa85ec81504
+		summarizeBy: none
+		sourceColumn: order_delivered_carrier_date
+
+	column order_delivered_customer_date
+		dataType: dateTime
+		lineageTag: fe033793-0fb2-49f8-9090-8c5ad2d9e38b
+		summarizeBy: none
+		sourceColumn: order_delivered_customer_date
+
+	column order_estimated_delivery_date
+		dataType: dateTime
+		lineageTag: 354f7ddf-0d41-428b-b841-6d2513c8e8df
+		summarizeBy: none
+		sourceColumn: order_estimated_delivery_date
+
+	column purchase_date
+		dataType: dateTime
+		lineageTag: 834935af-26a8-407f-b2ed-0003c299bd32
+		summarizeBy: none
+		sourceColumn: purchase_date
+
+	column customer_state
+		dataType: string
+		lineageTag: cd25b13d-a75c-4bd6-8699-953b8b321bd2
+		summarizeBy: none
+		sourceColumn: customer_state
+
+	column item_count
+		dataType: double
+		lineageTag: f8c965a7-78e6-47d7-a685-4737a3b7f9e4
+		summarizeBy: none
+		sourceColumn: item_count
+
+	column seller_count
+		dataType: double
+		lineageTag: 284452dd-d2ba-4405-aa46-cb147ec1f4d3
+		summarizeBy: none
+		sourceColumn: seller_count
+
+	column item_value
+		dataType: double
+		lineageTag: 64618345-3b55-43e1-95b7-a2eded53796a
+		summarizeBy: none
+		sourceColumn: item_value
+
+	column freight_value
+		dataType: double
+		lineageTag: 5710097d-ae74-4cf4-931d-283faf7736eb
+		summarizeBy: none
+		sourceColumn: freight_value
+
+	column weight_g
+		dataType: double
+		lineageTag: fc0b6ad7-d88d-4c9d-9605-56e39742c5d4
+		summarizeBy: none
+		sourceColumn: weight_g
+
+	column volume_cm3
+		dataType: double
+		lineageTag: 4b918c40-e644-4e41-bb78-8e893c351954
+		summarizeBy: none
+		sourceColumn: volume_cm3
+
+	column distance_km
+		dataType: double
+		lineageTag: 40fc357a-9efe-42c9-ad11-629254a9fb38
+		summarizeBy: none
+		sourceColumn: distance_km
+
+	column first_shipping_limit
+		dataType: dateTime
+		lineageTag: 1bb07cee-9ab5-4ba3-8431-b7058d88a0cd
+		summarizeBy: none
+		sourceColumn: first_shipping_limit
+
+	column primary_seller_id
+		dataType: string
+		lineageTag: 7661997c-bc82-4b90-985b-791db4dd3120
+		summarizeBy: none
+		sourceColumn: primary_seller_id
+
+	column primary_category
+		dataType: string
+		lineageTag: 09873e0e-a5c2-45a0-8c1c-a4d6be8cc5d9
+		summarizeBy: none
+		sourceColumn: primary_category
+
+	column primary_seller_state
+		dataType: string
+		lineageTag: 1751455c-c36d-411f-ab36-c38f2f29701a
+		summarizeBy: none
+		sourceColumn: primary_seller_state
+
+	column payment_value
+		dataType: double
+		lineageTag: bab1761e-f06a-4252-b2c3-254ae17d864d
+		summarizeBy: none
+		sourceColumn: payment_value
+
+	column payment_count
+		dataType: double
+		lineageTag: 8ac27cda-559c-4f8a-a633-544f6a9730c7
+		summarizeBy: none
+		sourceColumn: payment_count
+
+	column review_score
+		dataType: double
+		lineageTag: 086ec7b2-fe99-471a-88cb-51ba593dfaa8
+		summarizeBy: none
+		sourceColumn: review_score
+
+	column eligible_delivery
+		dataType: boolean
+		lineageTag: 32fd7052-7a0c-4cb7-ba59-24fbc5395a19
+		summarizeBy: none
+		sourceColumn: eligible_delivery
+
+	column is_late
+		dataType: double
+		lineageTag: 4917a5cf-2298-4e75-bb56-df8f9e8f4293
+		summarizeBy: none
+		sourceColumn: is_late
+
+	column delivery_days
+		dataType: double
+		lineageTag: 5d38a154-0fb6-44c0-87a6-4895a21b083a
+		summarizeBy: none
+		sourceColumn: delivery_days
+
+	column delay_days
+		dataType: double
+		lineageTag: a26bf069-9d9e-45a8-a26c-aa60567da435
+		summarizeBy: none
+		sourceColumn: delay_days
+
+	column promised_days
+		dataType: double
+		lineageTag: f2aaa274-9355-4a00-a8dd-52764f17541a
+		summarizeBy: none
+		sourceColumn: promised_days
+
+	column handoff_days
+		dataType: double
+		lineageTag: 71bd1d66-e632-4b8c-91df-a01b5a785d9f
+		summarizeBy: none
+		sourceColumn: handoff_days
+
+	column transit_days
+		dataType: double
+		lineageTag: 020e9b39-be1a-404e-b1d9-2be399c8d4e6
+		summarizeBy: none
+		sourceColumn: transit_days
+
+	column handoff_after_item_deadline
+		dataType: double
+		lineageTag: a590c722-e4fa-4694-b3d2-a5cbc32c27f7
+		summarizeBy: none
+		sourceColumn: handoff_after_item_deadline
+
+	partition Orders = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "fct_order.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    EmptyToNull = Table.ReplaceValue(Headers, "", null, Replacer.ReplaceValue, Table.ColumnNames(Headers)),
+				    Typed = Table.TransformColumnTypes(EmptyToNull, {{"order_id", type text}, {"customer_id", type text}, {"order_status", type text}, {"order_purchase_timestamp", type datetime}, {"order_approved_at", type datetime}, {"order_delivered_carrier_date", type datetime}, {"order_delivered_customer_date", type datetime}, {"order_estimated_delivery_date", type datetime}, {"purchase_date", type datetime}, {"customer_state", type text}, {"item_count", type number}, {"seller_count", type number}, {"item_value", type number}, {"freight_value", type number}, {"weight_g", type number}, {"volume_cm3", type number}, {"distance_km", type number}, {"first_shipping_limit", type datetime}, {"primary_seller_id", type text}, {"primary_category", type text}, {"primary_seller_state", type text}, {"payment_value", type number}, {"payment_count", type number}, {"review_score", type number}, {"eligible_delivery", type logical}, {"is_late", type number}, {"delivery_days", type number}, {"delay_days", type number}, {"promised_days", type number}, {"handoff_days", type number}, {"transit_days", type number}, {"handoff_after_item_deadline", type number}}, "en-US")
+				in
+				    Typed
+

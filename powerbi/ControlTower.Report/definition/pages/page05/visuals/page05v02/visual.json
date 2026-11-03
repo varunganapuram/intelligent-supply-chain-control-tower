@@ -1,0 +1,59 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "page05v02",
+  "position": {
+    "x": 335,
+    "y": 20,
+    "z": 2,
+    "width": 300,
+    "height": 140,
+    "tabOrder": 2
+  },
+  "visual": {
+    "visualType": "card",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Orders"
+                    }
+                  },
+                  "Property": "High Risk Orders"
+                }
+              },
+              "queryRef": "Orders.High Risk Orders",
+              "nativeQueryRef": "Orders.High Risk Orders"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'High Risk Orders'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

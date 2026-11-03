@@ -1,0 +1,11 @@
+{
+  "olist_orders_dataset.csv": true,
+  "olist_order_items_dataset.csv": true,
+  "olist_customers_dataset.csv": true,
+  "olist_sellers_dataset.csv": true,
+  "olist_products_dataset.csv": true,
+  "olist_order_payments_dataset.csv": true,
+  "olist_order_reviews_dataset.csv": true,
+  "olist_geolocation_dataset.csv": true,
+  "product_category_name_translation.csv": true
+}

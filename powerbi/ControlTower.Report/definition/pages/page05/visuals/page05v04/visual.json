@@ -1,0 +1,59 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "page05v04",
+  "position": {
+    "x": 965,
+    "y": 20,
+    "z": 4,
+    "width": 300,
+    "height": 140,
+    "tabOrder": 4
+  },
+  "visual": {
+    "visualType": "card",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Orders"
+                    }
+                  },
+                  "Property": "Model Precision at 50 per Day"
+                }
+              },
+              "queryRef": "Orders.Model Precision at 50 per Day",
+              "nativeQueryRef": "Orders.Model Precision at 50 per Day"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Model Precision at 50 per Day'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

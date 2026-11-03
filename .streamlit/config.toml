@@ -1,0 +1,11 @@
+[theme]
+base = "light"
+primaryColor = "#2563eb"
+backgroundColor = "#ffffff"
+secondaryBackgroundColor = "#f2f4f6"
+textColor = "#000000"
+dataframeHeaderTextColor = "#000000"
+font = "sans serif"
+[server]
+headless = true
+address = "127.0.0.1"

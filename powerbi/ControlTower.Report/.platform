@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "ControlTower"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "5bfc884b-8b12-450e-9e3c-d4d83e4c65ab"
+  }
+}

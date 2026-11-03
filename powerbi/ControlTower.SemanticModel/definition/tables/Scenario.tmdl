@@ -1,0 +1,74 @@
+table Scenario
+	lineageTag: e1d485c8-c126-4e67-9e6a-9721ab3a1ff0
+
+	column scenario_id
+		dataType: string
+		lineageTag: 8d151c99-d8e1-486f-8447-332dd7e56e1c
+		summarizeBy: none
+		sourceColumn: scenario_id
+
+	column scenario_name
+		dataType: string
+		lineageTag: a68b1727-49bf-4949-b282-a839f9bcebe2
+		summarizeBy: none
+		sourceColumn: scenario_name
+
+	column capacity
+		dataType: double
+		lineageTag: 3e47f73f-9678-4011-8b94-ac87fdec0984
+		summarizeBy: none
+		sourceColumn: capacity
+
+	column budget
+		dataType: double
+		lineageTag: 3b023632-b982-4a6c-8611-be2d38b9d5fa
+		summarizeBy: none
+		sourceColumn: budget
+
+	column cost
+		dataType: double
+		lineageTag: 5cba7b6c-02a8-4777-b3da-5340872fa6d0
+		summarizeBy: none
+		sourceColumn: cost
+
+	column effectiveness
+		dataType: double
+		lineageTag: d05e3f4a-b19a-42b4-a332-4c8b3d13c0b1
+		summarizeBy: none
+		sourceColumn: effectiveness
+
+	column impact
+		dataType: double
+		lineageTag: ac9bd2f4-d4b4-4ada-81e1-34f8c5ee1f57
+		summarizeBy: none
+		sourceColumn: impact
+
+	column value_fraction
+		dataType: double
+		lineageTag: 24c14611-92b7-4d02-8c7e-8089d28d12ff
+		summarizeBy: none
+		sourceColumn: value_fraction
+
+	column region_cap
+		dataType: double
+		lineageTag: 0e3db6d5-ba2c-4fcd-ad5d-bbf5b7925c83
+		summarizeBy: none
+		sourceColumn: region_cap
+
+	column interpretation
+		dataType: string
+		lineageTag: 2ded3662-3811-4503-9180-383f4d6a20ac
+		summarizeBy: none
+		sourceColumn: interpretation
+
+	partition Scenario = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "dim_scenario.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    EmptyToNull = Table.ReplaceValue(Headers, "", null, Replacer.ReplaceValue, Table.ColumnNames(Headers)),
+				    Typed = Table.TransformColumnTypes(EmptyToNull, {{"scenario_id", type text}, {"scenario_name", type text}, {"capacity", type number}, {"budget", type number}, {"cost", type number}, {"effectiveness", type number}, {"impact", type number}, {"value_fraction", type number}, {"region_cap", type number}, {"interpretation", type text}}, "en-US")
+				in
+				    Typed
+

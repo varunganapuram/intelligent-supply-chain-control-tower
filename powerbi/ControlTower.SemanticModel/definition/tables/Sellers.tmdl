@@ -1,0 +1,50 @@
+table Sellers
+	lineageTag: f8853a38-e6b2-4379-a5cb-961d407d6f76
+
+	column seller_id
+		dataType: string
+		lineageTag: 16adb403-6fdf-472a-bb2c-2cb8e72fce0c
+		summarizeBy: none
+		sourceColumn: seller_id
+
+	column seller_zip_code_prefix
+		dataType: string
+		lineageTag: 972f2620-8479-405b-be9b-93b2fc07775c
+		summarizeBy: none
+		sourceColumn: seller_zip_code_prefix
+
+	column seller_city
+		dataType: string
+		lineageTag: 52e2af15-73df-451d-a310-fa86a4eb1a8c
+		summarizeBy: none
+		sourceColumn: seller_city
+
+	column seller_state
+		dataType: string
+		lineageTag: 1edca852-0313-4aab-bc62-937e6eb7aec4
+		summarizeBy: none
+		sourceColumn: seller_state
+
+	column latitude
+		dataType: double
+		lineageTag: 52641d7f-de32-4634-9ade-ba6d51bf4382
+		summarizeBy: none
+		sourceColumn: latitude
+
+	column longitude
+		dataType: double
+		lineageTag: 123bbf58-225d-45d6-8f71-d2b7c46f54e3
+		summarizeBy: none
+		sourceColumn: longitude
+
+	partition Sellers = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "dim_seller.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    EmptyToNull = Table.ReplaceValue(Headers, "", null, Replacer.ReplaceValue, Table.ColumnNames(Headers)),
+				    Typed = Table.TransformColumnTypes(EmptyToNull, {{"seller_id", type text}, {"seller_zip_code_prefix", type text}, {"seller_city", type text}, {"seller_state", type text}, {"latitude", type number}, {"longitude", type number}}, "en-US")
+				in
+				    Typed
+

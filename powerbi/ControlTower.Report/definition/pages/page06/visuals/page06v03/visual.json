@@ -1,0 +1,59 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "page06v03",
+  "position": {
+    "x": 650,
+    "y": 20,
+    "z": 3,
+    "width": 300,
+    "height": 140,
+    "tabOrder": 3
+  },
+  "visual": {
+    "visualType": "card",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Orders"
+                    }
+                  },
+                  "Property": "Simulated Net Benefit"
+                }
+              },
+              "queryRef": "Orders.Simulated Net Benefit",
+              "nativeQueryRef": "Orders.Simulated Net Benefit"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Simulated Net Benefit'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

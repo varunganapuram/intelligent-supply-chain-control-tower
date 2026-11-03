@@ -1,0 +1,10 @@
+split,feature,unseen_category_rate,unique_categories,training_categories
+validation,customer_state,0.0,27,27
+validation,primary_seller_state,0.005063291139240506,17,20
+validation,primary_category,0.0,68,73
+calibration,customer_state,0.0,27,27
+calibration,primary_seller_state,0.01055605114481118,17,20
+calibration,primary_category,0.0002973535533749628,65,73
+test,customer_state,0.0,27,27
+test,primary_seller_state,0.011033821060206284,19,20
+test,primary_category,0.0008795074758135445,69,73

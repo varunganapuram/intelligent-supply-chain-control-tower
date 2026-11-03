@@ -1,0 +1,78 @@
+version: 2
+models:
+- name: stg_orders
+  columns:
+  - name: order_id
+    data_tests:
+    - unique
+    - not_null
+- name: stg_customers
+  columns:
+  - name: customer_id
+    data_tests:
+    - unique
+    - not_null
+- name: stg_sellers
+  columns:
+  - name: seller_id
+    data_tests:
+    - unique
+    - not_null
+- name: stg_products
+  columns:
+  - name: product_id
+    data_tests:
+    - unique
+    - not_null
+- name: fct_order
+  description: Exactly one row per source order. NULL is_late means ineligible.
+  columns:
+  - name: order_id
+    data_tests:
+    - unique
+    - not_null
+  - name: customer_id
+    data_tests:
+    - relationships:
+        arguments:
+          to: ref('dim_customer')
+          field: customer_id
+  - name: order_status
+    data_tests:
+    - accepted_values:
+        arguments:
+          values:
+          - delivered
+          - shipped
+          - canceled
+          - unavailable
+          - invoiced
+          - processing
+          - created
+          - approved
+- name: dim_geography
+  columns:
+  - name: zip_prefix
+    data_tests:
+    - unique
+    - not_null
+- name: fct_order_item
+  columns:
+  - name: order_id
+    data_tests:
+    - relationships:
+        arguments:
+          to: ref('fct_order')
+          field: order_id
+  - name: seller_id
+    data_tests:
+    - relationships:
+        arguments:
+          to: ref('dim_seller')
+          field: seller_id
+  - name: product_id
+    data_tests:
+    - relationships:
+        arguments:
+          to: ref('dim_product')
+          field: product_id

@@ -1,0 +1,18 @@
+{
+  "total_orders": 99441,
+  "eligible_orders": 96470,
+  "excluded_orders": 2971,
+  "late_orders": 6534,
+  "late_rate": 0.06773090079817559,
+  "on_time_rate": 0.9322690992018244,
+  "average_delivery_days": 12.558217098051976,
+  "p90_delivery_days": 23.09637731481482,
+  "average_delay_days": 0.7193117031201409,
+  "item_value": 13591643.7,
+  "freight_value": 2251909.54,
+  "payment_value": 16008872.120000001,
+  "reviewed_orders": 98673,
+  "dissatisfaction_rate": 0.1468892199487195,
+  "purchase_min": "2016-09-04 21:15:19",
+  "purchase_max": "2018-10-17 17:30:18"
+}

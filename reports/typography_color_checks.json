@@ -1,0 +1,59 @@
+{
+  "heading": {
+    "color": "rgb(0, 0, 0)",
+    "weight": "800"
+  },
+  "subheading": {
+    "color": "rgb(0, 0, 0)",
+    "weight": "300"
+  },
+  "body": {
+    "color": "rgb(0, 0, 0)",
+    "weight": "300"
+  },
+  "notes": {
+    "color": "rgb(0, 0, 0)",
+    "weight": "300"
+  },
+  "chart_tick_fill": "rgb(0, 0, 0)",
+  "charts": [
+    {
+      "font": {
+        "family": "Arial, sans-serif",
+        "size": 12,
+        "color": "#000000",
+        "weight": 300
+      },
+      "traces": [
+        {
+          "type": "scatter",
+          "color": "rgb(37,99,235)",
+          "width": 4,
+          "opacity": 1
+        },
+        {
+          "type": "scatter",
+          "color": "rgb(220,38,38)",
+          "width": null,
+          "opacity": 1
+        }
+      ]
+    },
+    {
+      "font": {
+        "family": "Arial, sans-serif",
+        "size": 12,
+        "color": "#000000",
+        "weight": 300
+      },
+      "traces": [
+        {
+          "type": "bar",
+          "color": "rgb(22,163,74)",
+          "width": null,
+          "opacity": 1
+        }
+      ]
+    }
+  ]
+}

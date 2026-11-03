@@ -1,0 +1,13 @@
+{
+  "name": "Delivery review",
+  "dataColors": [
+    "#2563eb",
+    "#dc2626",
+    "#16a34a",
+    "#9333ea",
+    "#ea580c"
+  ],
+  "background": "#ffffff",
+  "foreground": "#000000",
+  "tableAccent": "#2563eb"
+}

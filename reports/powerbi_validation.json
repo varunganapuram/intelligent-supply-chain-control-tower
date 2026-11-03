@@ -1,0 +1,6 @@
+{
+  "json_schema_files_validated": 60,
+  "status": "JSON schemas validated. Native Desktop refresh/DAX evidence is recorded separately in native_powerbi_acceptance.json; no pixel screenshot acceptance is implied.",
+  "semantic_model": "TMSL model.bim; CSV Import with DataFolder parameter",
+  "pages": 6
+}

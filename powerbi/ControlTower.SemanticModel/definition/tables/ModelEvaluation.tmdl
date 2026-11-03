@@ -1,0 +1,74 @@
+table ModelEvaluation
+	lineageTag: 3bb13dc7-e1b6-4026-a1bf-cf97aa0c34fc
+
+	column n
+		dataType: double
+		lineageTag: 0a4fe876-ee27-473b-b910-879fdf4705de
+		summarizeBy: none
+		sourceColumn: n
+
+	column late_rate
+		dataType: double
+		lineageTag: 725726c5-3c8d-4f53-ba91-de1dc3f76c85
+		summarizeBy: none
+		sourceColumn: late_rate
+
+	column roc_auc
+		dataType: double
+		lineageTag: 442a23f4-0d78-4bf9-b2ac-4db49b87d9ce
+		summarizeBy: none
+		sourceColumn: roc_auc
+
+	column average_precision
+		dataType: double
+		lineageTag: 3bc1bf90-49d7-4e8f-b00d-7f56d52aa39b
+		summarizeBy: none
+		sourceColumn: average_precision
+
+	column brier
+		dataType: double
+		lineageTag: 7926b370-a49e-4ff0-98db-01d6dedd6bec
+		summarizeBy: none
+		sourceColumn: brier
+
+	column log_loss
+		dataType: double
+		lineageTag: 26312ace-a55c-4473-bb46-9498ec56a0c9
+		summarizeBy: none
+		sourceColumn: log_loss
+
+	column precision_at_50_daily
+		dataType: double
+		lineageTag: 1a81ad73-cff1-451f-8482-d018c5421bac
+		summarizeBy: none
+		sourceColumn: precision_at_50_daily
+
+	column recall_at_50_daily
+		dataType: double
+		lineageTag: 39a6fddc-7bbf-459f-b684-a5b69adb5b28
+		summarizeBy: none
+		sourceColumn: recall_at_50_daily
+
+	column selected
+		dataType: double
+		lineageTag: a80de232-f48b-4d59-bac3-b38f55eea070
+		summarizeBy: none
+		sourceColumn: selected
+
+	column late_captured
+		dataType: double
+		lineageTag: 100e044b-4140-45c1-a5b2-93025ead66f5
+		summarizeBy: none
+		sourceColumn: late_captured
+
+	partition ModelEvaluation = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "model_evaluation.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    EmptyToNull = Table.ReplaceValue(Headers, "", null, Replacer.ReplaceValue, Table.ColumnNames(Headers)),
+				    Typed = Table.TransformColumnTypes(EmptyToNull, {{"n", type number}, {"late_rate", type number}, {"roc_auc", type number}, {"average_precision", type number}, {"brier", type number}, {"log_loss", type number}, {"precision_at_50_daily", type number}, {"recall_at_50_daily", type number}, {"selected", type number}, {"late_captured", type number}}, "en-US")
+				in
+				    Typed
+

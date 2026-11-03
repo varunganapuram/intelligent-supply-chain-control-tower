@@ -1,0 +1,10 @@
+// Run in Power BI DAX Query View after Refresh; compare with reports/kpis.json.
+EVALUATE
+ROW("Total Orders", [Total Orders],
+    "Eligible Orders", [Eligible Orders],
+    "Late Orders", [Late Orders],
+    "On-Time Delivery %", [On-Time Delivery %],
+    "Average Delivery Days", [Average Delivery Days],
+    "P90 Delivery Days", [P90 Delivery Days],
+    "Item Value", [Item Value],
+    "Dissatisfaction %", [Dissatisfaction %])

@@ -1,0 +1,13 @@
+feature,missing_rate,mean
+item_value,0.0,142.6483320923306
+freight_value,0.0,23.28525093075205
+weight_g,0.0,2560.6872673119883
+volume_cm3,0.0,17740.026656738646
+distance_km,0.0,559.0667271586074
+item_count,0.0,1.1523454951600893
+seller_count,0.0,1.019806403574088
+promised_days,0.0,24.212658227848102
+purchase_month,0.0,4.0
+purchase_weekday,0.0,2.7079672375279227
+seller_prior_late_rate,0.0,0.07425429201428708
+seller_prior_orders,0.0,228.81518987341772

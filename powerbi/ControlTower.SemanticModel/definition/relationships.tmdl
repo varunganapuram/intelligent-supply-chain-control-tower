@@ -1,0 +1,20 @@
+relationship c2686001-2c17-51f3-85e0-aa7b18494476
+	fromColumn: Orders.purchase_date
+	toColumn: Date.date_key
+
+relationship 1332b809-7cc5-5a05-9f6a-194f154f9e95
+	fromColumn: Orders.primary_seller_id
+	toColumn: Sellers.seller_id
+
+relationship 67c191a2-35de-57fc-a518-305270781f69
+	fromColumn: Risk.order_id
+	toColumn: Orders.order_id
+
+relationship c2f561bf-b385-5a05-909c-09ee31348197
+	fromColumn: Decisions.order_id
+	toColumn: Orders.order_id
+
+relationship d2968df9-b21e-5323-b3c5-2fb43433a39b
+	fromColumn: Decisions.scenario_id
+	toColumn: Scenario.scenario_id
+

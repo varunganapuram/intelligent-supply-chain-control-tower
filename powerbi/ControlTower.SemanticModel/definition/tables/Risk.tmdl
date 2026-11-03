@@ -1,0 +1,62 @@
+table Risk
+	lineageTag: 438618b6-230c-4c49-81ee-adbb2cb2e886
+
+	column order_id
+		dataType: string
+		lineageTag: 2aeb0eab-69d1-45b7-b129-fb4072733140
+		summarizeBy: none
+		sourceColumn: order_id
+
+	column prediction_as_of
+		dataType: dateTime
+		lineageTag: be7ecb81-82b9-4afa-a6a0-49075ae057ad
+		summarizeBy: none
+		sourceColumn: prediction_as_of
+
+	column scoring_run_id
+		dataType: string
+		lineageTag: 284c1ecb-7787-4de3-9180-de41505247bb
+		summarizeBy: none
+		sourceColumn: scoring_run_id
+
+	column model_version
+		dataType: string
+		lineageTag: c4d6074a-496d-4fd0-a60a-97eb37ef4a7a
+		summarizeBy: none
+		sourceColumn: model_version
+
+	column model_available_at
+		dataType: dateTime
+		lineageTag: 521903f6-2d25-40b0-8584-5bb82e05bf3c
+		summarizeBy: none
+		sourceColumn: model_available_at
+
+	column risk_probability
+		dataType: double
+		lineageTag: 87151ad8-402a-4547-bce7-72c2a1bb42e7
+		summarizeBy: none
+		sourceColumn: risk_probability
+
+	column risk_category
+		dataType: string
+		lineageTag: c301e295-666f-4104-84fe-5842d7a503c4
+		summarizeBy: none
+		sourceColumn: risk_category
+
+	column risk_rank
+		dataType: double
+		lineageTag: eaaa7e64-8069-469b-a035-dc94b453904e
+		summarizeBy: none
+		sourceColumn: risk_rank
+
+	partition Risk = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "fct_order_risk.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    EmptyToNull = Table.ReplaceValue(Headers, "", null, Replacer.ReplaceValue, Table.ColumnNames(Headers)),
+				    Typed = Table.TransformColumnTypes(EmptyToNull, {{"order_id", type text}, {"prediction_as_of", type datetime}, {"scoring_run_id", type text}, {"model_version", type text}, {"model_available_at", type datetime}, {"risk_probability", type number}, {"risk_category", type text}, {"risk_rank", type number}}, "en-US")
+				in
+				    Typed
+

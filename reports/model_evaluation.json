@@ -1,0 +1,97 @@
+{
+  "selected_model": "logistic__raw",
+  "model_version": "purchase-v3-frozen-20180701",
+  "model_available_at": "2018-07-01 00:00:00",
+  "feature_schema_sha256": "bb535ee782b34072f615ad7974413b6d32c8e18375abdc31a733c1b1920b9732",
+  "splits": {
+    "train": {
+      "n": 43609,
+      "purchase_min": "2016-09-15 12:16:38",
+      "purchase_max": "2017-12-31 23:29:31",
+      "max_label_known_at": "2018-01-31 23:45:08"
+    },
+    "method_fit": {
+      "n": 6231,
+      "purchase_min": "2018-02-01 00:24:55",
+      "purchase_max": "2018-02-28 23:57:55",
+      "max_label_known_at": "2018-03-31 13:51:44"
+    },
+    "validation": {
+      "n": 6715,
+      "purchase_min": "2018-04-01 00:11:32",
+      "purchase_max": "2018-04-30 23:47:26",
+      "max_label_known_at": "2018-05-31 00:09:39"
+    },
+    "calibration": {
+      "n": 6726,
+      "purchase_min": "2018-05-01 00:02:11",
+      "purchase_max": "2018-05-31 23:51:24",
+      "max_label_known_at": "2018-06-30 17:35:34"
+    },
+    "test": {
+      "n": 12507,
+      "purchase_min": "2018-07-01 00:25:07",
+      "purchase_max": "2018-08-29 15:00:37",
+      "max_label_known_at": "2018-10-02 00:18:50"
+    }
+  },
+  "label_cutoffs": {
+    "train": "2018-02-01",
+    "method_fit": "2018-04-01",
+    "validation": "2018-06-01",
+    "calibration": "2018-07-01"
+  },
+  "selected_calibration_method": "raw",
+  "probability_quality": {
+    "mean_predicted_risk": 0.08002314854933612,
+    "observed_late_rate": 0.04805309026944911,
+    "calibrated_brier": 0.047993643373307235,
+    "constant_brier": 0.045785644989933635,
+    "calibration_prior": 0.06348498364555456,
+    "calibration_prior_brier": 0.04598213411817677,
+    "expected_calibration_error": 0.031970058279887,
+    "retrospective_accepted": false,
+    "acceptance_gates": {
+      "finite_probabilities": true,
+      "pooled_bias_within_2pp": false,
+      "equal_frequency_ece_within_2pp": false,
+      "brier_beats_calibration_prior": false,
+      "monthly_bias_within_3pp": false
+    },
+    "operational_use_approved": false,
+    "status": "Retrospective revalidation completed with failed acceptance gates; not accepted for operational probability use",
+    "mean_bias_95pct_day_bootstrap": [
+      0.02278199813700999,
+      0.03951676468934771
+    ],
+    "brier_gain_95pct_day_bootstrap": [
+      -0.002907463661230742,
+      -0.0013625477976527051
+    ]
+  },
+  "thresholds": {
+    "high": 0.09901447640645217,
+    "medium": 0.0577779266018238,
+    "rule": "Calibration probabilities: 90th and 70th percentiles; ties may increase workload"
+  },
+  "calibration_workload": {
+    "high": 673,
+    "total": 6726
+  },
+  "test": {
+    "n": 12507,
+    "late_rate": 0.04805309026944911,
+    "roc_auc": 0.6337614698387507,
+    "average_precision": 0.07243682857237738,
+    "brier": 0.047993643373307235,
+    "log_loss": 0.19802067788743782,
+    "precision_at_50_daily": 0.05694915254237288,
+    "recall_at_50_daily": 0.2795341098169717,
+    "selected": 2950,
+    "late_captured": 168,
+    "ap_95pct_day_bootstrap": [
+      0.05976029133546772,
+      0.08551865633752881
+    ]
+  }
+}

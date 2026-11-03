@@ -1,0 +1,77 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "page04v06",
+  "position": {
+    "x": 650,
+    "y": 180,
+    "z": 6,
+    "width": 610,
+    "height": 420,
+    "tabOrder": 6
+  },
+  "visual": {
+    "visualType": "clusteredColumnChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Orders"
+                    }
+                  },
+                  "Property": "is_late"
+                }
+              },
+              "queryRef": "Orders.is_late",
+              "nativeQueryRef": "Orders.is_late"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Orders"
+                    }
+                  },
+                  "Property": "Dissatisfaction %"
+                }
+              },
+              "queryRef": "Orders.Dissatisfaction %",
+              "nativeQueryRef": "Orders.Dissatisfaction %"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Low-review rate by delivery outcome'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

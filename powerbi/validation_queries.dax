@@ -1,0 +1,21 @@
+// Native Desktop acceptance queries, also executed against its local model via ADOMD.
+// Run each EVALUATE separately in DAX Query View. Compare with reports/.
+EVALUATE SUMMARIZECOLUMNS(Orders[customer_state],
+    "Orders", [Total Orders], "Eligible", [Eligible Orders],
+    "Late", [Late Orders], "OnTime", [On-Time Delivery %])
+
+EVALUATE SUMMARIZECOLUMNS('Date'[year_month],
+    "Orders", [Total Orders], "Eligible", [Eligible Orders], "Late", [Late Orders])
+
+EVALUATE SUMMARIZECOLUMNS(Sellers[seller_id],
+    "Eligible", [Single-Seller Eligible], "LateRate", [Single-Seller Late %])
+
+EVALUATE ROW("Scored", [Scored Orders], "HighRisk", [High Risk Orders],
+    "AP", [Model Test AP], "PrecisionAt50", [Model Precision at 50 per Day])
+
+EVALUATE SUMMARIZECOLUMNS(Scenario[scenario_id],
+    "Selected", [Selected Cases], "Cost", [Assumed Investigation Cost],
+    "NetValue", [Simulated Net Benefit])
+
+EVALUATE CALCULATETABLE(ROW("Orders", [Total Orders], "OnTime", [On-Time Delivery %]),
+    Orders[customer_state]="NO_SUCH_STATE")

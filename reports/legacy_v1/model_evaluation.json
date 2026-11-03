@@ -1,0 +1,64 @@
+{
+  "selected_model": "logistic",
+  "model_version": "purchase-v1-frozen-20180501",
+  "model_available_at": "2018-05-01 00:00:00",
+  "feature_schema_sha256": "bb535ee782b34072f615ad7974413b6d32c8e18375abdc31a733c1b1920b9732",
+  "splits": {
+    "train": {
+      "n": 37865,
+      "purchase_min": "2016-09-15 12:16:38",
+      "purchase_max": "2017-11-30 23:24:16",
+      "max_label_known_at": "2017-12-31 09:26:24"
+    },
+    "validation": {
+      "n": 13278,
+      "purchase_min": "2018-01-01 02:48:41",
+      "purchase_max": "2018-02-28 23:57:55",
+      "max_label_known_at": "2018-03-31 13:51:44"
+    },
+    "calibration": {
+      "n": 6816,
+      "purchase_min": "2018-03-01 00:00:00",
+      "purchase_max": "2018-03-31 23:54:10",
+      "max_label_known_at": "2018-04-30 23:40:42"
+    },
+    "test": {
+      "n": 25352,
+      "purchase_min": "2018-05-01 00:02:11",
+      "purchase_max": "2018-08-29 15:00:37",
+      "max_label_known_at": "2018-10-17 13:22:46"
+    }
+  },
+  "probability_quality": {
+    "mean_predicted_risk": 0.2039878048004917,
+    "observed_late_rate": 0.043980751025560115,
+    "calibrated_brier": 0.07072282227699092,
+    "constant_brier": 0.042051096536767606,
+    "status": "Calibration worsens Brier score versus constant baseline; probabilities require revalidation before operational value estimates"
+  },
+  "thresholds": {
+    "high": 0.2625745685405403,
+    "medium": 0.19350585357964495,
+    "rule": "Calibration probabilities: 90th and 70th percentiles; ties may increase workload"
+  },
+  "calibration_workload": {
+    "high": 682,
+    "total": 6816
+  },
+  "test": {
+    "n": 25352,
+    "late_rate": 0.043980751025560115,
+    "roc_auc": 0.7027220916913344,
+    "average_precision": 0.08962561931126295,
+    "brier": 0.07072282227699092,
+    "log_loss": 0.2821279233506402,
+    "precision_at_50_daily": 0.0675,
+    "recall_at_50_daily": 0.3632286995515695,
+    "selected": 6000,
+    "late_captured": 405,
+    "ap_95pct_day_bootstrap": [
+      0.0771628046676155,
+      0.10311822015765267
+    ]
+  }
+}
